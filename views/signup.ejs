@@ -1,30 +1,30 @@
 <%- include( 'layouts/head' ) %>
 <body>
     <%- include( 'layouts/navbar' ) %>
-    <div class="bg-[#f9f9f9]" style="height: 1000px">
-        <div class="flex flex-row">
-            <div class="basis-3/6"></div>
-            <div class="basis-2/6 bg-[#ffffff] p-5" style="margin-top: 240px;">
-                <h1 class="mb-3">SIGNUP</h1><hr>
-                <form action="/signup" method="post" class="input-group mt-4">
+    <div class="container-fluid" style="height: 1000px; background-color: #f9f9f9;">
+        <div class="d-flex row">
+            <div class="col-xxl-4"></div>
+
+            <div class="col-xxl-4" style="margin-top: 240px; background-color: #ffffff; height: 650px;">
+                <h1 class="m-3 btn-login-tit">SIGNUP</h1><hr>
+                <form action="/signup" method="post" class="input-group mt-4 mb-4">
                     <label class="label">Nombre</label><input class="input-login" type="text" name="name" required autocomplete="off">
-                    <label class="label">Email</label><input class="input-login"  type="text" name="username" required autocomplete="off">
+                    <label class="label">Email</label><input class="input-login"  type="email" name="username" required autocomplete="off">
                     <label class="label">Contraseña</label><input class="input-login" type="password" name="password" required autocomplete="off">
+                    <label class="label">Domicilio</label><input class="input-login" type="text" name="adress" required autocomplete="off">
+                    <label class="label">Edad</label><input class="input-login" type="number" name="age" required autocomplete="off">
                     
-                    <button type="submit" class="btn-login mt-9 bg-[#e7e7e7] justify-center items-center"><h3 class="justify-center items-center font-[700]">SIGNUP</h3></button>
+                    <button type="submit" class="btn-login mt-5"><h3 class="btn-login-text">SIGNUP</h3></button>
                 </form>
-                <div class="flex flex-row justify-center items-center mt-6">
-                    <div class="basis-1/4"><hr></div>
-                    <div class="basis-2/4"><h1 class="flex justify-center items-center text-[12px]">ALREADY HAVE AN ACCOUNT?</h1></div>
-                    <div class="basis-1/4"><hr></div>
+                <div class="row pb-4">
+                    <div class="col-xxl-4"><hr></div>
+                    <div class="col-xxl-4 d-flex align-items-center justify-content-center"><h5 class="new-to-cloud">ALREADY HAVE AN ACCOUNT?</h5></div>
+                    <div class="col-xxl-4"><hr></div>
                 </div>
-                <a href="/login"><button class="btn-signup hover:bg-[#e7e7e7] mt-8 bg-[#ffffff] justify-center items-center font-[700]">LOGIN</button></a>
+                <a href="/login"><button class="btn-signup">LOGIN</button></a>
             
-                
-
-
             </div>
-            <div class="basis-3/6"></div>
+            <div class="col-xxl-4"></div>
         </div>
     
     
@@ -33,6 +33,6 @@
     
     </div>
         
-       
+    <%- include( 'layouts/footer' ) %>
 </body>
 </html>

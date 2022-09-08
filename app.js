@@ -10,6 +10,7 @@ const { initPassport } = require('./config/passport.config.js');
 const routesLogin = require('./routes/login')
 const routesHome =require('./routes/home')
 const routeProd=require('./routes/prod_carga')
+const routeShoes=require('./routes/shoes')
 const path = require('path');
 
 
@@ -40,7 +41,10 @@ app.use(methodOverride('_method'))
 //views
 app.set("views", path.join(__dirname, 'views'))
 app.set("view engine", "ejs")
-app.use(express.static(path.join(__dirname, 'dist')))
+
+app.use('/public', express.static('public'));
+
+
 
 /////////////////////////////End Config///////////////////////////////////////////
 
@@ -71,18 +75,18 @@ app.get('/signupError', routesLogin.signupError)
 app.get('/logout',routesLogin.getLogout)
 
 //verify
-app.get("/index", routesLogin.checkAuthentication, (req, res) => {
-    res.render("index")
-})
+app.get("/index", routesLogin.checkAuthentication)
 
-
+//prod admin
 app.get('/admin',routeProd.getProd)
 app.post('/admin', routeProd.postProd)
-//prod
+app.delete('/admin/:id', routeProd.deleteProd)
+
+//vistas producto especifico
+app.get('/shoes/:id',routeShoes.getShoesProd)
 
 
 
 
 
 module.exports = httpServer,io;
-

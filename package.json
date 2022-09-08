@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "tail":"npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "tail": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
     "start": "nodemon server.js"
   },
   "author": "",
@@ -24,6 +24,7 @@
     "mongoose": "^6.5.1",
     "mongoose-bcrypt": "^1.9.0",
     "nginx": "^1.0.8",
+    "nodemailer": "^6.7.8",
     "nodemon": "^2.0.19",
     "normalizr": "^3.6.2",
     "passport": "^0.6.0",

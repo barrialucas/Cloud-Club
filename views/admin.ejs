@@ -1,12 +1,47 @@
 <%- include( 'layouts/head' ) %>
-<body>
-    <form action="/admin" method="post">
-        Nombre del producto <input type="text" name="title"><br> 
-        Precio del producto <input type="number" name="price"><br> 
-        Url del producto <input type="text" name="img"><br>
-        Descripción <input type="text" name="desc"><br>
-        Stock <input type="number" name="stock"><br>
+
+<body class=" container-fluid">
+    <h1>PANEL ADMIN CARGA DE PRODUCTOS</h1>
+    <hr>
+    <br>
+    <form action="/admin" method="post" class="ml-3">
+        Nombre del producto <input class="mb-3 input-admin input-login" type="text" name="title"><br>
+        Precio del producto <input class="mb-3 input-admin input-login" type="number" name="price"><br>
+        URL img <input class="mb-3 input-admin input-login" type="text" name="img"><br>
+        URL img2 <input class="mb-3 input-admin input-login" type="text" name="img2"><br>
+        URL img3 <input class="mb-3 input-admin input-login" type="text" name="img3"><br>
+        URL img4 <input class="mb-3 input-admin input-login" type="text" name="img4"><br>
+        Descripción <input class="mb-3 input-admin input-login" type="text" name="desc"><br>
+        Stock <input class="input-admin input-login" type="number" name="stock"><br>
         <br>
-        <br><input type="submit">
+        <button class="border-solid bg-[green] p-1 rounded" type="submit">Cargar</button>
     </form>
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-xxl-1"></div>
+        <div class="col-xxl-10">
+            <div class="mt-8">
+                <div class="m-4 row">
+                    <% prods.forEach((p) =>{ %>
+                    <div class="card p-4 col-xxl-3">
+                        <h3 class="text-center"><%= p.title %></h3>
+                        <p class="text-center">------$<%= p.price %>------</p>
+                        <img class="img-fluid"src="<%= p.img %>" alt="<%= p.title %>">
+                        <p><%= p.desc %></p>
+                        <p>Stock: <%= p.stock %></p>
+                        <p>id: <%= p._id %></p>
+                        <a href="/admin/<%= p._id %>">Borrar</a>
+                        <br>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xxl-1"></div>
+    </div>
+
+
+    <%- include( 'layouts/footer' ) %>
 </body>

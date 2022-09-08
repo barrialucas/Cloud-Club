@@ -1,12 +1,31 @@
-<nav class="fixed inset-x-0 bg-[#666060]">
-    <div class="flex flex-row text-center mt-2 mb-2 justify-center items-center">
-        <div class="basis-1/4 "><input placeholder="Search" type="text" class="input" required=""></div>
-        <div class="basis-1/2"><a href="/"><h1 class="text-[35px] font-[1000] italic tracking-tighter text-[#279AF1]">Cloud Club</h1></a></div>
-        <div class="basis-1/4 space-x-7 text-[#FFFFFF]">
-            <a href="" class="text-[16px] font-[300] text-[#FFFFFF]">Sneakers</a>
-            <a href="/login" class="text-[16px] font-[300] text-[#FFFFFF]">Acount</a>
-            
+<nav class="flex container-fluid navb py-1">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-xxl-4">
+            <form class="d-flex search-nav">
+                <input id="form-nav" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
         </div>
-        
+
+        <div class="col-xxl-4">
+            <h1 class="d-flex align-items-center justify-content-center"><a href="/" class="Cloud">Cloud Club</a></h1>
+        </div>
+
+
+        <div class="col-xxl-4">
+            <div class="d-flex align-items-center justify-content-end">
+                <a href="" class="nav-right">Sneakers</a>
+                <div class="dropdown ms-2">
+                    <button id="nav-right" class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"aria-expanded="false">
+                        Cuenta
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item " href="/login">Mi cuenta</a></li>
+                        <li><a class="dropdown-item" href="#">Mis pedidos</a></li>
+                        <li><a class="dropdown-item" href="/signup">Registrarse</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </div>
 </nav>

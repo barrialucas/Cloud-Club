@@ -1,29 +1,33 @@
 <%- include( 'layouts/head' ) %>
 <body>
      <%- include( 'layouts/navbar' ) %>
-    <div class="bg-[#f9f9f9]" style="height: 1000px">
+    <div class="container-fluid" style="height: 1000px; background-color: #f9f9f9;">
     
-        <div class="flex flex-row">
-            <div class="basis-3/6"></div>
-            <div class="basis-2/6 bg-[#ffffff] p-5" style="margin-top: 240px;">
-                <h1 class="mb-3">LOGIN</h1><hr>
-                <form action="/login" method="post" class="input-group mt-4" >
-                    <label class="label">Email</label><input class="input-login"  type="text" name="username" required autocomplete="off"><br>
+        <div class="d-flex row">
+            <div class="col-xxl-4"></div>
+
+            <div class="col-xxl-4" style="margin-top: 240px; background-color: #ffffff; height: 430px;">
+                <h1 class="m-3 btn-login-tit">LOGIN</h1><hr>
+                <form action="/login" method="post" class="input-group mt-4 mb-4" >
+                    <label class="label">Email</label><input class="input-login"  type="email" name="username" required autocomplete="off"><br>
                     <label class="label">Contraseña</label><input class="input-login"  type="password" name="password" required autocomplete="off"><br>
-                    <button class="btn-login mt-9 bg-[#e7e7e7] justify-center items-center" type="submit"><h3 class="justify-center items-center font-[700]">LOGIN</h3></button>
+                    <button class="btn-login mt-5 " type="submit"><h3 class="btn-login-text ">LOGIN</h3></button>
                 </form>
-                <div class="flex flex-row justify-center items-center mt-6">
-                    <div class="basis-2/4"><hr></div>
-                    <div class="basis-2/4"><h1 class="flex justify-center items-center text-[12px]">NEW TO CLOUD CLUB?</h1></div>
-                    <div class="basis-2/4"><hr></div>
+
+                <div class="row pb-4">
+                    <div class="col-xxl-4 "><hr></div>
+                    <div class="col-xxl-4 d-flex align-items-center justify-content-center "><h5 class="new-to-cloud ">NEW TO CLOUD CLUB?</h5></div>
+                    <div class="col-xxl-4"><hr></div>
                 </div>
-                <a href="/signup"><button class="btn-signup hover:bg-[#e7e7e7] mt-8 bg-[#ffffff] justify-center items-center font-[700]">SIGNUP</button></a>
+
+                <a href="/signup"><button class="btn-signup">SIGNUP</button></a>
             </div>
-            <div class="basis-3/6"></div>
+
+            <div class="col-xxl-4"></div>
         </div>
     
     </div>
    
-
+    <%- include( 'layouts/footer' ) %>
 </body>
 </html>
