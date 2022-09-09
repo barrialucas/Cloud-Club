@@ -2,24 +2,47 @@
 
 <body style="background-color:#f9f9f9 ;">
   <%- include( 'layouts/navbar' ) %>
-  <main class="mt-5">
-    <div class="mt-3 d-flex">
-      <div class="col-xxl-1"></div>
-      <div class="col-xxl-10">
-        <div class="row row-cols-5 d-flex justify-content-center" >
-            <% prods.forEach((p) =>{ %>
-            <div class="col m-2 p-2  shoes-index" style="background-color:#FFFFFF;">
-              <a class="shoes-a "href="/shoes/<%= p._id %>">
-                <img class="img-fluid" src="<%= p.img %>" alt="<%= p.title %>">
-                <h5 class="mt-5 shoes-titulo" ><%= p.title %></h5>
-                <h2 class="mb-5 shoes-desc"><%= p.desc %></h2>
-              </a>
-            </div>
-            <% }) %>
-      </div>
-      <div class="col-xxl-1"></div>
+  <main class="mt-5 container-fluid">
 
+    <div class="container px-1" style="margin-top: 200px;">
+      <div class="row gx-4">
+        <div class="col"></div>
+        
+        <div class="col">
+         <div class="p-3 border bg-light cuenta">
+           <h3>Cuenta</h3>
+           <hr>
+           <% users.forEach((u) =>{ %>
+            <h5><%= u.name %></h5>
+            <h5><%= u.username %></h5>
+           <% }) %>
+
+         </div>
+        </div>
+        <div class="col">
+          <div class="p-3 border bg-light cuenta">
+            <h3>Datos Personales</h3>
+            <hr>
+            <% users.forEach((u) =>{ %>
+              <h5>Domicilio<%= u.adress %></h5>
+              <h5>Edad <%= u.age %></h5>
+              <h5>Tel <%= u.phone %></h5>
+             <% }) %>
+          </div>
+        </div>
+        <div class="col"></div>
+      </div>
     </div>
+
+    
+    <div class="row mt-3" >
+      <div class="col-xxl-4"></div>
+      <div class="col-xxl-4 box-logout d-flex justify-content-center align-items-center" ><a href="/logout" class=""><h1>Logout</h1></a></div>
+      <div class="col-xxl-4"></div>
+    </div>
+
+
+    
 
   <!--   <a href="logout">Logout</a> -->
 

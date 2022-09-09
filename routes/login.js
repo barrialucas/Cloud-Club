@@ -1,20 +1,23 @@
-const ProdsModel=require('../models/prod')
+const UsersModel=require('../models/users')
 //login
 function getLogin(req, res) {
     if(req.isAuthenticated()) {
-        res.render("index",{user:req.body.username })
-        res.send('USUARIO LOGEADO')
+        UsersModel
+            .find({username:postLogin.email})
+            .then((users) => res.render('account', {users}))
+            .catch((err) => res.send(err));
     } else {
         res.render("login")
     }
 }
 function postLogin(req, res) {
-    ProdsModel
-            .find({})
-            .then((prods) => res.render('index', { prods,user:req.body.name }))
+    const email =req.body.username
+    UsersModel
+            .find({ username:email})
+            .then((users) => res.render('account', {users}))
             .catch((err) => res.send(err));
-
 }
+
 //signup
 function getSignup(req, res) {
     res.render("signup")
@@ -44,8 +47,6 @@ function checkAuthentication(req, res, next) {
     if( req.isAuthenticated() )next()
     else res.redirect("/login")
 }
-
-
 
 
 

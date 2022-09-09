@@ -1,0 +1,46 @@
+.navb{
+    background: #ad5389;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+filter: blur(-2px);
+}
+
+.Cloud{
+    font-family: $helvetica;
+  color: white;
+  text-decoration: none;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -3px;
+  font-size: 40px;
+}
+.Cloud:hover{
+    color: white;
+}
+.search-nav{
+    width: 300px;
+    background-color: transparent;
+}
+.nav-right{
+    font-family: $helvetica;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+.nav-right:hover{
+    text-decoration: none;
+    color: white;
+}
+
+#nav-right{
+    font-family: $helvetica;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    
+}
+#form-nav{
+    background-color: transparent;
+    color: white;
+}

@@ -11,6 +11,7 @@ const routesLogin = require('./routes/login')
 const routesHome =require('./routes/home')
 const routeProd=require('./routes/prod_carga')
 const routeShoes=require('./routes/shoes')
+const routeSneak=require('./routes/sneakers')
 const path = require('path');
 
 
@@ -42,7 +43,7 @@ app.use(methodOverride('_method'))
 app.set("views", path.join(__dirname, 'views'))
 app.set("view engine", "ejs")
 
-app.use('/public', express.static('public'));
+app.use('/src', express.static('src'));
 
 
 
@@ -75,15 +76,18 @@ app.get('/signupError', routesLogin.signupError)
 app.get('/logout',routesLogin.getLogout)
 
 //verify
-app.get("/index", routesLogin.checkAuthentication)
+app.get("/account", routesLogin.checkAuthentication)
 
 //prod admin
 app.get('/admin',routeProd.getProd)
 app.post('/admin', routeProd.postProd)
 app.delete('/admin/:id', routeProd.deleteProd)
 
+
+//sneakers
+app.get('/sneakers',routeSneak.getSneakers)
 //vistas producto especifico
-app.get('/shoes/:id',routeShoes.getShoesProd)
+app.get('/sneakers/:id',routeShoes.getShoesProd)
 
 
 

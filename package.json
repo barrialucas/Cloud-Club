@@ -24,6 +24,7 @@
     "mongoose": "^6.5.1",
     "mongoose-bcrypt": "^1.9.0",
     "nginx": "^1.0.8",
+    "node-sass": "^7.0.3",
     "nodemailer": "^6.7.8",
     "nodemon": "^2.0.19",
     "normalizr": "^3.6.2",

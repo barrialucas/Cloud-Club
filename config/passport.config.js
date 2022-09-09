@@ -39,6 +39,7 @@ const initPassport = () => {
             adress:req.body.adress,
             age:req.body.age,
             name:req.body.name,
+            phone:req.body.phone,
             date: Date.now().toString(),
 
           }

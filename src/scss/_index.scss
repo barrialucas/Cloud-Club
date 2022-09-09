@@ -1,0 +1,54 @@
+.shoes-index a{
+    text-decoration: none;
+  }
+  .shoes-a{
+    color: #fff !important;
+    text-decoration: none;
+  }
+  .shoes-titulo{
+    font-family: $helvetica;
+    font-weight: medium;
+    color: #818181;
+    font-size: 12px;
+  }
+  .shoes-desc{
+    font-family: $helvetica;
+    font-weight: medium;
+    color: #000000;
+    font-size: 14px;
+  }
+
+
+  //cuadros informativos cuenta
+
+
+  .cuenta{
+    height: 200px;
+    margin-bottom: 20px;
+    h3{
+      font-family: $helvetica;
+      font-weight: medium;
+      font-size: 14px;
+      color: #000000;
+    }
+    h5{
+      font-family: $helvetica;
+      font-weight: regular;
+      font-size: 12px;
+      color: #818181;
+    }
+    
+  }
+  .box-logout{
+      height: 50px;
+     background-color: #000000;
+     a{
+      text-decoration: none;
+      h1{
+        font-family: $helvetica;
+      color: #FFFFFF;
+      font-weight: bold;
+      font-size: 20px;
+      }
+     }
+  }

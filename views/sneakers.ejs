@@ -1,0 +1,22 @@
+<%- include( 'layouts/head' ) %>
+<body style="background-color: #f9f9f9;">
+    <%- include( 'layouts/navbar' ) %>
+    <div class=" d-flex" style="margin-top: 100px;">
+        <div class="col-xxl-1"></div>
+        <div class="col-xxl-10 mt-5">
+          <div class="row row-cols-5 d-flex justify-content-center" >
+              <% prods.forEach((p) =>{ %>
+              <div class="col m-2 p-2  shoes-index" style="background-color:#FFFFFF;">
+                <a class="shoes-a "href="/sneakers/<%= p._id %>">
+                  <img class="img-fluid" src="<%= p.img %>" alt="<%= p.title %>">
+                  <h5 class="mt-5 shoes-titulo" ><%= p.title %></h5>
+                  <h2 class="mb-5 shoes-desc"><%= p.desc %></h2>
+                </a>
+              </div>
+              <% }) %>
+        </div>
+        <div class="col-xxl-1"></div>
+  
+      </div>
+      <%- include( 'layouts/footer' ) %>
+</body>
