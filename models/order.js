@@ -4,7 +4,9 @@ const Order='Order';
 
 const userSchema = 
 mongoose.Schema({
+    name:{type:String, required:true},
     user: {type:String, required:true},
+    phone: {type:Number, required:true},
     userId: {type:String, required:true},
     order:[Object],
     precio: {type:Object},

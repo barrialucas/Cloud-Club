@@ -51,6 +51,8 @@ function confirm(){
             .then(res => res.json)
             .then(dat => console.log(dat))
             .catch(err => console.log(err))
+
+    borrarCart()
 }
 
 //precio total

@@ -28,6 +28,4 @@ const enviarEthereal = (email, asunto, mensaje) => {
 	});
 };
 
-module.exports = {
-	enviarEthereal,
-};
+module.exports = {enviarEthereal,};

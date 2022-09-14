@@ -12,7 +12,7 @@ const postCart=(req,res)=>{
       {$push: {cart: req.body}},
       (error, success) => {
          if(error) console.log(error)
-         else console.log(success)
+         else (success)
      }
    )
 }
@@ -35,19 +35,48 @@ const deleteProdCart= async(req,res)=>{
    )
    
 }
+const sendEmail=require('../email/ethereal')
 
+//order
+
+const accountSID = 'AC11d7b7ab9f72df9663d32f2e11c0101d'
+const authToken = '517f5389c5994eaa45870c6dd6f403cd'
+const client = require('twilio')(accountSID, authToken)
 
 const order=async(req,res)=>{
    const user= await req.user
    const order= await Order.create({
+      name:user.name,
       user:user.username,
+      phone:user.phone,
       userId:user._id,
       order:user.cart,
       precio:req.body,
     })
+    //pedido al admin
+    sendEmail.enviarEthereal(
+      process.env.EMAIL_ADMIN,
+      'Nuevo pedido de: '+ order.name +' / '+order.user,
+      JSON.stringify(order)
+    )
+   //pedido al usuario
+    sendEmail.enviarEthereal(
+      order.user,
+      'Pedido recibido',
+      JSON.stringify(order)
+    )
 
-    //agregar celular wsp
+    //agregar celular wsp NO ANDA
+    client.messages.create({
+      from: 'whatsapp:+14155238886',
+      to: 'whatsapp:+',
+      body: ''
+   })
+      .then(message => console.log(message))
+      .catch(e => console.log(e))
 }
+
+
 
 
 

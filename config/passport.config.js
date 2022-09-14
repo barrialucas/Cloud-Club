@@ -6,6 +6,7 @@ const Users = require("../models/users")
 
 const bcryptjs = require("bcryptjs")
 const sendEmail=require('../email/ethereal')
+
 require('dotenv').config();
 
 const initPassport = () => {
