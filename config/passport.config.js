@@ -1,6 +1,9 @@
 const passport = require('passport')
 const LocalStrategy = require("passport-local").Strategy
 const Users = require("../models/users")
+
+
+
 const bcryptjs = require("bcryptjs")
 const sendEmail=require('../email/ethereal')
 require('dotenv').config();
@@ -24,16 +27,18 @@ const initPassport = () => {
   ))
 
 
-  passport.use('signup', new LocalStrategy({
-      passReqToCallback: true
-    },
-    (req, username, password, done) => {
-        Users.findOne({username}, (err, user) => {
-          if (err) return done(err)
-          if (user) {
-            return done(null, false)
-          }
-          const newUser = {
+  passport.use('signup', new LocalStrategy({passReqToCallback: true,},
+
+    async (req, username, password, done) => {
+      try {
+        if (await Users.exists({ username })) {
+          console.log('email existente');
+          return done(null, false, {
+            message: "This mail already exists, login"
+          });
+        }
+
+          const user = await Users.create ({
             username,
             password,
             adress:req.body.adress,
@@ -41,33 +46,34 @@ const initPassport = () => {
             name:req.body.name,
             phone:req.body.phone,
             date: Date.now().toString(),
+          })
+          done(null,{
+            ...user,
+            id: user._id
+          })
 
-          }
-          const userss = Users(req.body)
-          userss
-              .save(newUser, (err, userWithID) => {
-                if (err) return done(err)
-                return done(null, userWithID)
-              })
-              
+
           sendEmail.enviarEthereal(
-                process.env.EMAIL_ADMIN,
-                'Nuevo Registro',
-                JSON.stringify(newUser)
-          )              
-        })
-    }
-  ))
+            process.env.EMAIL_ADMIN,
+            'Nuevo Registro',
+            JSON.stringify(user)
+      )
+                   
+      }
+      catch(err){
+        console.log(err);
+      } 
+}))
+    
 
 
 
   passport.serializeUser((user, done) => {
-    done(null, user._id)
+    done(null, user.id)
   })
   passport.deserializeUser((id, done) => {
     Users.findById(id, done)
   })
-
 
 }
 

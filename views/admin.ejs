@@ -6,12 +6,12 @@
     <br>
     <form action="/admin" method="post" class="ml-3">
         Nombre del producto <input class="mb-3 input-admin input-login" type="text" name="title"><br>
-        Precio del producto <input class="mb-3 input-admin input-login" type="number" name="price"><br>
+        Descripción <input class="mb-3 input-admin input-login" type="text" name="desc"><br>
         URL img <input class="mb-3 input-admin input-login" type="text" name="img"><br>
         URL img2 <input class="mb-3 input-admin input-login" type="text" name="img2"><br>
         URL img3 <input class="mb-3 input-admin input-login" type="text" name="img3"><br>
         URL img4 <input class="mb-3 input-admin input-login" type="text" name="img4"><br>
-        Descripción <input class="mb-3 input-admin input-login" type="text" name="desc"><br>
+        Precio del producto <input class="mb-3 input-admin input-login" type="number" name="price"><br>
         Stock <input class="input-admin input-login" type="number" name="stock"><br>
         <br>
         <button class="border-solid bg-[green] p-1 rounded" type="submit">Cargar</button>
@@ -31,7 +31,7 @@
                         <p><%= p.desc %></p>
                         <p>Stock: <%= p.stock %></p>
                         <p>id: <%= p._id %></p>
-                        <a href="/admin/<%= p._id %>">Borrar</a>
+                        <button   onclick="deleteProduct('<%= p._id %>')" >Borrar</button>
                         <br>
                     </div>
                     <% }) %>
@@ -44,4 +44,11 @@
 
 
     <%- include( 'layouts/footer' ) %>
+    
+    <script>
+        const deleteProduct =  (id)  => {
+                fetch(`/delete/${id}` ,{method:'delete'})
+                .catch( err => {console.log(err)})
+            }
+    </script>
 </body>

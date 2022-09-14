@@ -1,0 +1,58 @@
+<%- include( 'layouts/head' ) %>
+<body style="background-color:#f9f9f9;">
+    <%- include( 'layouts/navbar' ) %>
+
+<div class="container-fluid" style="margin-top: 200px;">
+
+    <% if(user.cart.length == 0) { %>
+        <div class="d-flex justify-content-center">
+            <h2>Tu carrito esta vacio</h2>
+        </div>
+    <% } else { %>
+    <div class="row">
+        <div class="col-xxl-2"></div>
+        <div class="col-xxl-8" style="background-color: #ffffff;">
+            <% user.cart.forEach((p) =>{ %>
+            <div class="row m-4">
+                <div class="col-xxl-2"><img src="<%= p.img %>" alt="" class="img-thumbnail"></div>
+
+                <div class="col-xxl-5  ">
+                    <h3><%= p.title %></h3>
+                    <h4><%= p.desc %></h4>
+                </div>
+                <div class="col-xxl-3">
+                    <h3>$<span class="price"><%= p.price%></span></h3>
+                </div>
+
+                <div class="col-xxl-2"><h1 class="delete" data-id="<%= p.id%>">X</h1></div>
+            </div>
+            
+            <% }) %>
+
+            <hr>
+            
+            <div class="row">
+                <div class="col-xxl-3">
+                    <button  onclick="borrarCart()">Vaciar carro</button>
+                </div>
+                <div class="col-xxl-6">
+                    <button onclick="confirm()" >Confirmar Orden</button> 
+                </div>
+                <div class="col-xxl-3">
+                    <h1>Total</h1>
+                    <h3><span id="precioFinal"></span></h3>
+                </div>
+            </div>
+            
+            
+    
+        </div>
+        <div class="col-xxl-2"></div>
+    </div>
+    <% } %>
+</div>
+
+
+    <%- include( 'layouts/footer' ) %>
+    <script src="../src/cart.js"></script>
+</body>

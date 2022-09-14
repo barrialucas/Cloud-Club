@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "tail": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
     "start": "nodemon server.js"
   },
   "author": "",

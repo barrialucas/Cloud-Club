@@ -9,6 +9,7 @@ mongoose.Schema({
     adress:{type:String, required:true},
     age:{type:Number, required:true},
     phone:{type:Number, required:true},
+    cart: [Object],
     date:{type: Date, default: Date.now}
 })
 userSchema.pre("save", function (next) {

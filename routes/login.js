@@ -1,22 +1,31 @@
 const UsersModel=require('../models/users')
 //login
 function getLogin(req, res) {
-    if(req.isAuthenticated()) {
-        UsersModel
-            .find({username:postLogin.email})
-            .then((users) => res.render('account', {users}))
-            .catch((err) => res.send(err));
-    } else {
-        res.render("login")
+    if (req.isAuthenticated()) {
+        return res.redirect("/account")
+    }else{
+        res.render('login')
     }
 }
-function postLogin(req, res) {
-    const email =req.body.username
-    UsersModel
-            .find({ username:email})
-            .then((users) => res.render('account', {users}))
-            .catch((err) => res.send(err));
+function postLogin (req, res) {
+    res.render('account')
 }
+
+
+const account=async (req,res)=>{
+    const user=req.user
+    try {
+        UsersModel
+        .find({username: user.username})
+        .then((users) => res.status(200).render("account",{users}))
+        .catch((err) => res.send(err));
+        
+      } catch (error) {
+        res.status(500).send(error)
+      }
+}
+
+
 
 //signup
 function getSignup(req, res) {
@@ -24,7 +33,6 @@ function getSignup(req, res) {
 }
 function postSignup(req, res) {
     res.render("login")
-    //enviar mail indicando quien se registro
 }
 //logout
 function getLogout(req, res,next) {
@@ -42,13 +50,8 @@ function loginError(req,res){
 function signupError(req,res){
     res.status("USUARIO YA REGISTRADO")
 }
-//verify
-function checkAuthentication(req, res, next) {
-    if( req.isAuthenticated() )next()
-    else res.redirect("/login")
-}
 
 
 
 
-module.exports = {checkAuthentication,getLogin,postLogin,getSignup,postSignup,getLogout,loginError,signupError}
+module.exports = {account,postLogin,getLogin,getSignup,postSignup,getLogout,loginError,signupError}

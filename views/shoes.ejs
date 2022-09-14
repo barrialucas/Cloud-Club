@@ -44,14 +44,12 @@
                 <% shoes.forEach((p) =>{ %>
                     <h5 class="mb-3 mt-6 shoes-title-vista" style="margin-top: 100px;"><%= p.title %></h5>
                     <h2 class="shoes-desc-vista"><%= p.desc %></h2>
+                    <p>$ <%= p.price %></p>
+
+
+                    <button class="add" data-desc="<%= p.desc %>" data-id="<%= p._id %>" data-title="<%= p.title %>" data-img="<%= p.img %>" data-price="<%= p.price %>">Agregar al carrito</button>
                 <% }) %>
-                
 
-
-
-
-
-                
 
             </div>
             <div class="col-xxl-2"></div>
@@ -59,4 +57,5 @@
 
     </main>
     <%- include( 'layouts/footer' ) %>
-</body>
+    <script src="../src/addTo.js"></script>
+</body> 

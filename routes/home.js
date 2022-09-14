@@ -1,4 +1,5 @@
 //home
+
 function getRoot(req, res) {
     res.render("home")//error
 }
