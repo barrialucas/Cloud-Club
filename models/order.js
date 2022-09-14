@@ -7,7 +7,7 @@ mongoose.Schema({
     user: {type:String, required:true},
     userId: {type:String, required:true},
     order:[Object],
-    precio:{type:Number, required:true},
+    precio: {type:Object},
     
     date:{type: Date, default: Date.now}
 })

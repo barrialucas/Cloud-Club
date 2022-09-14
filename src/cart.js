@@ -1,20 +1,8 @@
 const price=document.getElementsByClassName('price')
 const final = document.getElementById('precioFinal')
-
 const borrar = document.getElementsByClassName('delete')
+let precioFinal=0
 
-
-let precioFinal;
-
-
-//precio total
-const renderPrecio = () => {
-    let precioFinal = 0
-    for (const p of price) {
-        precioFinal += Number(p.innerHTML)
-    } final.innerText = `$${precioFinal}`
-}
-renderPrecio()
 
 
 //borrar producto
@@ -49,7 +37,9 @@ function borrarCart(){
 //confirmar orden
 
 function confirm(){
-    const precio={precio:precioFinal}
+    const precio={
+        precio:precioFinal
+    }
     const options = {
         method: 'POST',
         body: JSON.stringify(precio),
@@ -62,6 +52,16 @@ function confirm(){
             .then(dat => console.log(dat))
             .catch(err => console.log(err))
 }
+
+//precio total
+const renderPrecio = () => {
+    precioFinal = 0
+
+    for (const p of price) {
+        precioFinal += Number(p.innerHTML)
+    } final.innerText = `$${precioFinal}`
+}
+renderPrecio()
     
         
 

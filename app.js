@@ -105,7 +105,7 @@ app.delete('/cart',auth, routeCart.deleteCart)
 app.delete('/cart/:prod',auth, routeCart.deleteProdCart)
 
 
-app.post('/order',auth,routeCart.order)
+app.post('/order',routeCart.order)
 
 
 

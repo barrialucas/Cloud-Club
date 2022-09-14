@@ -38,13 +38,15 @@ const deleteProdCart= async(req,res)=>{
 
 
 const order=async(req,res)=>{
-   const user= req.user
+   const user= await req.user
    const order= await Order.create({
       user:user.username,
       userId:user._id,
-      order:[],
-      precio:req.body
+      order:user.cart,
+      precio:req.body,
     })
+
+    //agregar celular wsp
 }
 
 
