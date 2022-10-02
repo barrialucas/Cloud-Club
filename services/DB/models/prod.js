@@ -16,4 +16,7 @@ mongoose.Schema({
     date:{type: Date, default: Date.now}
 })
 
-module.exports = mongoose.model(Prods, userSchema);
+
+const Productos=mongoose.model(Prods, userSchema)
+
+module.exports = Productos;

@@ -3,8 +3,6 @@ const final = document.getElementById('precioFinal')
 const borrar = document.getElementsByClassName('delete')
 let precioFinal=0
 
-
-
 //borrar producto
 for (const b of borrar) {
     b.addEventListener('click', () => {
@@ -21,8 +19,7 @@ for (const b of borrar) {
             .catch(err => console.log(err))
     })
 }
-//borrar carro
-
+//borrar vaciar all
 function borrarCart(){
     const options = {
         method: 'DELETE',
@@ -35,7 +32,6 @@ function borrarCart(){
 
 
 //confirmar orden
-
 function confirm(){
     const precio={
         precio:precioFinal
@@ -47,7 +43,7 @@ function confirm(){
             "Content-Type": "application/json; charset=UTF-8"
         }
     }
-    fetch('/order', options)
+    fetch('/cart/order', options)
             .then(res => res.json)
             .then(dat => console.log(dat))
             .catch(err => console.log(err))
@@ -64,15 +60,3 @@ const renderPrecio = () => {
     } final.innerText = `$${precioFinal}`
 }
 renderPrecio()
-    
-        
-
-
-
-
-
-
-
-
-
-

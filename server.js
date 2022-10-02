@@ -13,7 +13,6 @@ async function server(){
         
           const server= httpServer.listen(process.env.PORT, () => {console.log(`SV ON...`)})
           server.on('error', err => console.log('Error en el server: ' + err));
-
     }catch(error){
         console.log(error);
     }

@@ -1,8 +1,6 @@
 const passport = require('passport')
 const LocalStrategy = require("passport-local").Strategy
-const Users = require("../models/users")
-
-
+const Users = require("../services/DB/models/users")
 
 const bcryptjs = require("bcryptjs")
 const sendEmail=require('../email/ethereal')
@@ -66,9 +64,6 @@ const initPassport = () => {
       } 
 }))
     
-
-
-
   passport.serializeUser((user, done) => {
     done(null, user.id)
   })

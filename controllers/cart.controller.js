@@ -1,12 +1,12 @@
-const Users=require('../models/users')
-const Order=require('../models/order')
+const Users=require('../services/DB/models/users')
+const Order=require('../services/DB/models/prod')
 
-const getCart=async (req,res)=>{
+async function getCart(req,res){
    const user=await req.user  
    res.render('cart',{user}) 
 }
 
-const postCart=(req,res)=>{
+async function postCart(req,res){
    Users.findByIdAndUpdate(
       {_id: req.user._id},
       {$push: {cart: req.body}},
@@ -17,7 +17,7 @@ const postCart=(req,res)=>{
    )
 }
 
-const deleteCart=async(req,res)=>{
+async function deleteCart(req,res){
    const userID = await req.user._id
     await Users.updateOne(
         {_id: userID},
@@ -25,7 +25,7 @@ const deleteCart=async(req,res)=>{
     )
 }
 
-const deleteProdCart= async(req,res)=>{
+async function deleteProdCart(req,res){
    const userID = await req.user._id
    const prod = await req.params.prod
 
@@ -38,12 +38,7 @@ const deleteProdCart= async(req,res)=>{
 const sendEmail=require('../email/ethereal')
 
 //order
-
-const accountSID = 'AC11d7b7ab9f72df9663d32f2e11c0101d'
-const authToken = '517f5389c5994eaa45870c6dd6f403cd'
-const client = require('twilio')(accountSID, authToken)
-
-const order=async(req,res)=>{
+async function order(req,res){
    const user= await req.user
    const order= await Order.create({
       name:user.name,
@@ -66,21 +61,6 @@ const order=async(req,res)=>{
       JSON.stringify(order)
     )
 
-    //agregar celular wsp NO ANDA
-    client.messages.create({
-      from: 'whatsapp:+14155238886',
-      to: 'whatsapp:+',
-      body: ''
-   })
-      .then(message => console.log(message))
-      .catch(e => console.log(e))
 }
-
-
-
-
-
-
-
 
 module.exports={getCart,postCart,deleteProdCart,deleteCart,order}
