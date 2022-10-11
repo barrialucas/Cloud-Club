@@ -11,7 +11,7 @@ const path = require('path');
 
 /////////////////
 
-//const RUTAS//
+//RUTAS//
 const generalRouter=require("./routes/general.route")
 const userRouter=require("./routes/login2.route")
 const productRouter =require('./routes/prod.route.js');
@@ -63,6 +63,8 @@ app.use('/admin', productRouter)
 app.use('/sneakers', sneakersRouter)
 //cart
 app.use('/cart', cartRouter )
+
+
 
 
 
