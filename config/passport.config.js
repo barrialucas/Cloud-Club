@@ -3,7 +3,7 @@ const LocalStrategy = require("passport-local").Strategy
 const Users = require("../services/DB/models/users")
 
 const bcryptjs = require("bcryptjs")
-const sendEmail=require('../email/ethereal')
+const sendEmail=require('./ethereal')
 
 require('dotenv').config();
 
@@ -44,6 +44,7 @@ const initPassport = () => {
             age:req.body.age,
             name:req.body.name,
             phone:req.body.phone,
+            avatar:req.body.avatar,
             date: Date.now().toString(),
           })
           done(null,{

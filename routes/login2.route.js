@@ -15,7 +15,8 @@ router.post('/login',passport.authenticate('login',{
 
 
 router.post('/signup',passport.authenticate('signup',{
-    failureRedirect: '/api/signup'
+    failureRedirect: '/api/signup',
+    successRedirect: "/api/account",
 }), userController.signUp);
 
 module.exports= router;

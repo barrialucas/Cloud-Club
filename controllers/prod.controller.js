@@ -1,4 +1,5 @@
-const ProductoService =require("../services/prod.service.js") ;
+const ProductoService =require("../services/prod.service.js")
+const logger=require('../utils/loggers/logger')
 
 const productoService = ProductoService.getInstance();
 
@@ -6,7 +7,7 @@ async function getAll(req, res) {
     const products = await productoService.getAll();
     products
         ? res.render('admin', {prods:products})
-        : res.status(400).json({"error": "there was a problem when trying to get the products"})
+        : res.status(400).json({"error": "there was a problem when trying to get the products"}),logger.warn
 }
 
 async function create(req, res) {
@@ -15,7 +16,7 @@ async function create(req, res) {
 
     newProduct
         ? res.redirect('/admin')
-        : res.status(400).json({"error": "there was an error, please verify the body content match the schema"})
+        : res.status(400).json({"error": "there was an error, please verify the body content match the schema"}),logger.warn
 }
 
 
@@ -25,7 +26,7 @@ async function remove(req, res) {
 
     wasDeleted
         ? res.status(200).json({"success": "product successfully removed"})
-        : res.status(404).json({"error": "product not found"})
+        : res.status(404).json({"error": "product not found"}),logger.warn
 }
 
 module.exports={getAll,remove,create}

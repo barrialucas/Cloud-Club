@@ -9,6 +9,7 @@ mongoose.Schema({
     adress:{type:String, required:true},
     age:{type:Number, required:true},
     phone:{type:Number, required:true},
+    avatar:{type:String, required:true},
     cart: [Object],
     date:{type: Date, default: Date.now}
 })

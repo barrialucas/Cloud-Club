@@ -8,6 +8,7 @@ const session = require('express-session')
 const methodOverride = require('method-override')
 const { initPassport } = require('./config/passport.config.js');
 const path = require('path');
+const logger=require('./utils/loggers/logger')
 
 /////////////////
 
@@ -17,6 +18,7 @@ const userRouter=require("./routes/login2.route")
 const productRouter =require('./routes/prod.route.js');
 const sneakersRouter =require('./routes/sneakersAll.route.js')
 const cartRouter=require('./routes/cart.route')
+const msgRouter=require('./routes/msg.route')
 
 //settings
 const app = express()
@@ -48,8 +50,30 @@ app.set("view engine", "ejs")
 
 app.use('/src', express.static(path.join(__dirname,'src')));
 
-/////////////////////////////End Config///////////////////////////////////////////
+//////////////////////////////////End Config//////////////////////////////////
 
+/*--------CHAT--------*/
+const Msg=require("./services/DB/models/msg.model.js")
+io.on(`connection`, (socket)=>{
+  
+    Msg.find({}, function (err, docs) {
+      socket.emit (`message`, docs)
+    })
+
+    socket.on("new-msg", (data) => {
+      const msg= new Msg({
+        name:data.name,
+        text:data.text,
+        date:data.fecha
+      })
+
+      msg.save()
+      .then(()=>{io.emit('message', msg)})
+      .catch((err) => logger.error(err))
+    });
+})
+
+/*--------------------------------------*/
 
 //ROUTES
 
@@ -64,8 +88,7 @@ app.use('/sneakers', sneakersRouter)
 //cart
 app.use('/cart', cartRouter )
 
-
-
+app.use('/msg', msgRouter )
 
 
 module.exports = httpServer,io;

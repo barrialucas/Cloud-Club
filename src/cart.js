@@ -6,6 +6,7 @@ let precioFinal=0
 //borrar producto
 for (const b of borrar) {
     b.addEventListener('click', () => {
+        
         const prod = b.getAttribute('data-id')
         const options = {
             method: 'DELETE',
@@ -14,25 +15,29 @@ for (const b of borrar) {
             }
             
         }
+        
         fetch(`/cart/${prod}`, options)
-            .then(dat => console.log(dat))
-            .catch(err => console.log(err))
+            .then(dat =>location.reload(true))
+            .catch(err => console.log(err));
+            
+            location.reload(true)
     })
 }
-//borrar vaciar all
+
+//borrar cart / vaciar cart
 function borrarCart(){
     const options = {
         method: 'DELETE',
     }
     fetch(`/cart`, options)
-        .then(dat => console.log(dat))
-        .catch(err => console.log(err))
-      
+        .then(dat =>console.log(dat))
+        .catch(err => console.log(err));
+
 }
 
 
 //confirmar orden
-function confirm(){
+async function confirm(){
     const precio={
         precio:precioFinal
     }
@@ -45,7 +50,7 @@ function confirm(){
     }
     fetch('/cart/order', options)
             .then(res => res.json)
-            .then(dat => console.log(dat))
+            .then(dat =>console.log(dat))
             .catch(err => console.log(err))
 
     borrarCart()

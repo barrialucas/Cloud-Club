@@ -6,7 +6,6 @@ async function logInView(req, res) {
         res.render('login')
     }
 }
-
 async function signUpView(req, res) {
     if (req.isAuthenticated()) {
         return res.redirect("/api/account")

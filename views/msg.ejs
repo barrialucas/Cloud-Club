@@ -1,0 +1,23 @@
+<%- include( 'layouts/head' ) %>
+<script src="/socket.io/socket.io.js"></script>
+
+<body>
+    <%- include( 'layouts/navbar' ) %>
+    <div style="margin-top: 200px;">
+        <h2>Comentarios</h2>
+
+        <form id="form">
+            Nombre:<input name="name" id="mail"><br>
+            Comentario: <input name="text" id="text">
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <div id="chat"></div>
+
+    <script src="../src/msg.js">
+        
+    </script>
+</body>
+
+</html>

@@ -47,7 +47,11 @@
     
     <script>
         const deleteProduct =  (id)  => {
-                fetch(`/delete/${id}` ,{method:'delete'})
+                fetch(`/admin/delete/${id}` ,{method:'delete'})
+                .then(()=>{
+                    alert("borrado exitosamente");
+                    window.location.reload();
+                })
                 .catch( err => {console.log(err)})
         }
     </script>

@@ -1,9 +1,14 @@
 const Users=require('../services/DB/models/users')
-const Order=require('../services/DB/models/prod')
+const Order=require('../services/DB/models/order')
+const sendEmail=require('../config/ethereal')
 
 async function getCart(req,res){
    const user=await req.user  
    res.render('cart',{user}) 
+}
+
+async function getOrder(req,res){ 
+   res.render('order') 
 }
 
 async function postCart(req,res){
@@ -33,17 +38,18 @@ async function deleteProdCart(req,res){
        {_id: userID},
        {$pull: {cart: {id: prod}}}
    )
-   
 }
-const sendEmail=require('../email/ethereal')
 
 //order
-async function order(req,res){
+const shortid = require('shortid');
+async function postOrder(req,res){
    const user= await req.user
    const order= await Order.create({
+      _id: shortid.generate(),
       name:user.name,
       user:user.username,
       phone:user.phone,
+      adress:user.adress,
       userId:user._id,
       order:user.cart,
       precio:req.body,
@@ -51,16 +57,16 @@ async function order(req,res){
     //pedido al admin
     sendEmail.enviarEthereal(
       process.env.EMAIL_ADMIN,
-      'Nuevo pedido de: '+ order.name +' / '+order.user,
+      'Nuevo pedido de: '+ order.name +' / '+order.user +' / orden: '+order._id,
       JSON.stringify(order)
     )
    //pedido al usuario
     sendEmail.enviarEthereal(
       order.user,
-      'Pedido recibido',
+      'Pedido recibido---Número de orden'+order._id,
       JSON.stringify(order)
     )
 
 }
 
-module.exports={getCart,postCart,deleteProdCart,deleteCart,order}
+module.exports={getCart,postCart,deleteProdCart,deleteCart,postOrder,getOrder}
