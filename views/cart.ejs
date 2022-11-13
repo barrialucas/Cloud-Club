@@ -17,16 +17,18 @@
                 <div class="col-xxl-2"><img src="<%= p.img %>" alt="" class="img-thumbnail"></div>
 
                 <div class="col-xxl-5 d-flex flex-column  justify-content-center ">
-                    <h3><%= p.title %></h3>
-                    <h4><%= p.desc %></h4>
+                    <h3 class="title-cart"><%= p.title %></h3>
+                    <h4 class="desc-cart"><%= p.desc %></h4>
                 </div>
                 <div class="col-xxl-3 d-flex flex-column  justify-content-center">
                     <h3>$<span class="price"><%= p.price%></span></h3>
                 </div>
 
                 <div class="col-xxl-2 d-flex flex-column  justify-content-center">
-                    <h1 class="delete" data-id="<%= p.id%>" style="cursor:pointer">
-                        <svg  height="50px" style="color:red"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></svg>
+                    <h1 id="delete" onclick="borrarProd()" data-id="<%= p.id%>" style="cursor:pointer">
+                        <a href="javascript:setTimeout(()=>{window.location = '/cart' },1000);">
+                            <svg  height="50px" style="color:red"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></svg>
+                        </a>
                     </h1>
                 </div>
             </div>
@@ -36,14 +38,14 @@
             <hr>
             
             <div class="row">
-                <div class="col-xxl-3 d-flex flex-column align-items-center">
-                    <a href="/sneakers"  onclick="borrarCart()" >Vaciar carro</a>
+                <div class="col-xxl-3 d-flex flex-column align-items-center bn40div">
+                    <a class="bn40" href="/sneakers"  onclick="borrarCart()" >Vaciar carro</a>
                 </div>
-                <div class="col-xxl-6 d-flex flex-column align-items-center">
-                    <a onclick="confirm()" href="/cart/order">Confirmar Orden</a> 
+                <div class="col-xxl-6 d-flex flex-column align-items-center bn40div">
+                    <a class="bn40" onclick="confirm()" href="/cart/order">Confirmar Orden</a> 
                 </div>
                 <div class="col-xxl-3 d-flex flex-column align-items-center">
-                    <h3>Total: <span id="precioFinal"></span></h3>
+                    <h3 class="totall">Total: <span id="precioFinal"></span></h3>
                 </div>
             </div>
             

@@ -240,6 +240,13 @@
   font-size: 20px;
 }
 
+.not h3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 5px;
+}
+
 .shoes-title-vista {
   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: medium;
@@ -256,5 +263,65 @@
 
 .colShoes {
   padding-top: 50px;
+}
+
+.price-shoes {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color: #000000;
+  font-size: 15px;
+  margin-bottom: 50px;
+}
+
+.bn40 {
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: large;
+  padding: 4px 6px;
+  color: #2c2c2c !important;
+  text-decoration: none;
+}
+
+.bn40::after {
+  max-width: 100%;
+  height: 2px;
+  display: block;
+  content: "";
+  background: -webkit-gradient(linear, right top, left top, from(#ff9100), color-stop(50%, #f10366), to(#6173ff));
+  background: linear-gradient(-90deg, #ff9100 0%, #f10366 50%, #6173ff 100%);
+  opacity: 1;
+  margin-bottom: -6px;
+  margin-top: 1px;
+}
+
+.bn40div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.title-cart {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color: #818181;
+  font-size: 20px;
+}
+
+.desc-cart {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color: #000000;
+  font-size: 24px;
+}
+
+.price {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.totall {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 500;
+  letter-spacing: 4px;
+}
+
+.caja-coment {
+  background-color: red;
 }
 /*# sourceMappingURL=style.css.map */

@@ -4,29 +4,37 @@ const logger=require('../utils/loggers/logger')
 const productoService = ProductoService.getInstance();
 
 async function getAll(req, res) {
-    const products = await productoService.getAll();
-    products
-        ? res.render('admin', {prods:products})
-        : res.status(400).json({"error": "there was a problem when trying to get the products"}),logger.warn
+    if (req.isAdmin){
+        const products = await productoService.getAll();
+        products
+            ? res.render('admin', {prods:products})
+            : logger.warn('error getAll admin')
+    }
 }
 
 async function create(req, res) {
-    const {body} = req;
-    const newProduct = await productoService.create(body);
-
-    newProduct
-        ? res.redirect('/admin')
-        : res.status(400).json({"error": "there was an error, please verify the body content match the schema"}),logger.warn
+    if (req.isAdmin){
+        const {body} = req;
+        const newProduct = await productoService.create(body);
+        
+        newProduct
+            ? res.redirect('/admin')
+            : logger.warn('error create admin')
+    }
+    
 }
 
 
 async function remove(req, res) {
-    const {id} = req.params;
-    const wasDeleted = await productoService.deleteById({ _id: id })
-
-    wasDeleted
-        ? res.status(200).json({"success": "product successfully removed"})
-        : res.status(404).json({"error": "product not found"}),logger.warn
+    if (req.isAdmin){
+        const {id} = req.params;
+        const wasDeleted = await productoService.deleteById({ _id: id })
+        
+        wasDeleted
+            ? res.status(200).json({"success": "product successfully removed"})
+            : logger.warn('error remove admin')
+    }
+    
 }
 
 module.exports={getAll,remove,create}

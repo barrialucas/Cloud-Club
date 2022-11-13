@@ -9,7 +9,6 @@ const methodOverride = require('method-override')
 const { initPassport } = require('./config/passport.config.js');
 const path = require('path');
 const logger=require('./utils/loggers/logger')
-
 /////////////////
 
 //RUTAS//
@@ -18,7 +17,6 @@ const userRouter=require("./routes/login2.route")
 const productRouter =require('./routes/prod.route.js');
 const sneakersRouter =require('./routes/sneakersAll.route.js')
 const cartRouter=require('./routes/cart.route')
-const msgRouter=require('./routes/msg.route')
 
 //settings
 const app = express()
@@ -77,18 +75,16 @@ io.on(`connection`, (socket)=>{
 
 //ROUTES
 
-//home y account
 app.use('/', generalRouter)
-//login 
 app.use('/api', userRouter)
-//prod admin 
 app.use('/admin', productRouter)
-//sneakers 
 app.use('/sneakers', sneakersRouter)
-//cart
-app.use('/cart', cartRouter )
+app.use('/cart', cartRouter)
 
-app.use('/msg', msgRouter )
+app.use('/*',(req,res)=>{
+  res.render('notfound')
+})
+
 
 
 module.exports = httpServer,io;

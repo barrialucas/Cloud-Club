@@ -41,91 +41,14 @@
       <div class="col-xxl-4 box-logout d-flex justify-content-center align-items-center" ><a href="/api/logout" class=""><h1>Logout</h1></a></div>
       <div class="col-xxl-4"></div>
     </div>
-
-
-    
-
-  <!--   <a href="logout">Logout</a> -->
-
-
-    <!-- <h1>Chat</h1>
-    <form id="formChat">
-      Nombre:<input name="name" id="name"><br>
-      Edad:<input name="edad" id="age"><br>
-      Avatar:<input name="avatar" id="avatar"><br>
-      username:<input name="username" id="mail"><br>
-      Mensaje: <input name="text" id="text">
-      <br><button type="submit">Enviar</button>
-    </form>
-
-    <div class="messages" id="mensajes"></div> -->
+    <div class="row mt-3" >
+      <div class="col-xxl-4"></div>
+      <div class="col-xxl-4 box-logout d-flex justify-content-center align-items-center" style="background-color: #EFEFEF"><a href="/msg"><h1 style="color: black;">Comentarios!</h1></a></div>
+      <div class="col-xxl-4"></div>
+    </div>
 
   </main>
   <%- include( 'layouts/footer' ) %>
 </body>
-<script>
-  const socket = io.connect();
-  const denormalize = normalizr.denormalize;
-  const schema = normalizr.schema;
-
-
-  const schemaAuthor = new schema.Entity(
-    "author", {}, {
-      idAttribute: "mail",
-    }
-  );
-  const schemaMessage = new schema.Entity(
-    "message", {
-      schemaAuthor,
-    }, {
-      idAttribute: "id",
-    }
-  );
-  const schemaAllMsg = new schema.Entity(
-    "allMessages", {
-      messages: [schemaMessage],
-    }, {
-      idAttribute: "id",
-    }
-  );
-
-
-
-  socket.on("messages", (data) => {
-    const denormalizedData = denormalize(
-      data.result,
-      schemaAllMsg,
-      data.entities
-    )
-    console.log(denormalizedData);
-  });
-
-
-
-  const addMsg = () => {
-    let fecha = new Date().toLocaleDateString()
-    let hora = new Date().toLocaleTimeString()
-    const message = {
-      author: {
-        name: document.getElementById("name").value,
-        age: document.getElementById("age").value,
-        avatar: document.getElementById("avatar").value,
-        mail: document.getElementById("mail").value,
-      },
-      msg: {
-        text: document.getElementById("text").value,
-        date: fecha + " " + hora,
-      }
-
-    };
-    socket.emit("new-message", message);
-  };
-
-  const element = document.getElementById("formChat");
-  element.addEventListener("submit", (event) => {
-    event.preventDefault();
-    addMsg();
-  });
-</script>
 
 </html>

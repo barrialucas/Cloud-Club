@@ -1,9 +1,8 @@
-//get
 async function logInView(req, res) {
     if (req.isAuthenticated()) {
         return res.redirect("/api/account")
     }else{
-        res.render('login')
+        res.render('login',{status: false})
     }
 }
 async function signUpView(req, res) {
@@ -20,8 +19,6 @@ async function logOutView(req, res, next) {
       });
 }
 
-
-//post
 async function signUp(req, res) {
     res.render('account')
 }

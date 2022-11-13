@@ -1,7 +1,13 @@
 <%- include( 'layouts/head' ) %>
 
 <body>
-    <h1>Hasta Luego!</h1>
-    <a href="/">Home</a>
+    <%- include( 'layouts/navbar' ) %>
+    <div class="d-flex flex-column align-items-center">
+        <h2 style="margin-top:340px">Hasta Luego!</h2>
+        <div class="bn40div">
+            <a class="bn40" href="/">Ir al inicio</a>
+            <a class="bn40" href="/api/login">Acceder al e-commerce</a>
+        </div>
+    </div>
 </body>
 </html>

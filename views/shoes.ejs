@@ -9,7 +9,6 @@
             <div class="col-xxl-5">
                 <% shoes.forEach((p) =>{ %>
                       
-
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                           <div class="carousel-item active">
@@ -35,7 +34,6 @@
                         </button>
                       </div>
                       
-
                 <% }) %>
                 
 
@@ -44,10 +42,12 @@
                 <% shoes.forEach((p) =>{ %>
                     <h5 class="mb-3 mt-6 shoes-title-vista" style="margin-top: 100px;"><%= p.title %></h5>
                     <h2 class="shoes-desc-vista"><%= p.desc %></h2>
-                    <p>$ <%= p.price %></p>
-                    <a href="javascript:setTimeout(()=>{window.location = '/cart' },1000);" onclick="add()" class="adds"data-desc="<%= p.desc %>" data-id="<%= p._id %>" data-title="<%= p.title %>" data-img="<%= p.img %>" data-price="<%= p.price %>" data-stock="<%= p.stock %>">
-                      Agregar e ir al carrito
-                    </a>
+                    <p class="price-shoes">$ <%= p.price %></p>
+                    <div class="bn40div">
+                      <a href="javascript:setTimeout(()=>{window.location = '/cart' },1000);" onclick="add()" class="adds bn40"data-desc="<%= p.desc %>" data-id="<%= p._id %>" data-title="<%= p.title %>" data-img="<%= p.img %>" data-price="<%= p.price %>" data-stock="<%= p.stock %>">
+                        Agregar e ir al carrito
+                      </a>
+                    </div>
                 <% }) %>
 
 

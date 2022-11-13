@@ -17,4 +17,8 @@ async function account(req, res){
       }
 }
 
-module.exports={getHome,account}
+async function msg(req, res){
+  res.render(`msg`)
+}
+
+module.exports={getHome,account,msg}

@@ -1,22 +1,41 @@
 <%- include( 'layouts/head' ) %>
 <script src="/socket.io/socket.io.js"></script>
 
-<body>
+<body class="container-fluid">
     <%- include( 'layouts/navbar' ) %>
     <div style="margin-top: 200px;">
-        <h2>Comentarios</h2>
+        <div class="row">
+            <div class="col-xxl-4"></div>
+            <div class="col-xxl-4 d-flex flex-column justify-content-center align-items-center mb-5">
+                <h2>Dejanos un comentario!</h2>
+        
+                <form id="form" class="mb-4 input-group">
+                    <label class="label">Nombre</label>
+                    <input name="name" id="mail" class="input-login" required><br>
+                    <label class="label">Comentario</label>
+                    <input type="text" name="text" id="text" class="input-login" required>
+                    <br>
+                    <div class="bn40div mt-4 align-items-center">
+                        <button class="bn40" type="submit">Enviar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xxl-4"></div>
 
-        <form id="form">
-            Nombre:<input name="name" id="mail"><br>
-            Comentario: <input name="text" id="text">
+        </div>
 
-            <button type="submit">Enviar</button>
-        </form>
     </div>
-    <div id="chat"></div>
+    <div class="row">
+        <div class="col-xxl-3"></div>
+        <div class="col-xxl-6">
+            <div class="row d-flex justify-content-center" id="chat"></div>
+        </div>
+        <div class="col-xxl-3"></div>
+
+    </div>
+    
 
     <script src="../src/msg.js">
-        
     </script>
 </body>
 

@@ -63,8 +63,8 @@ async function postOrder(req,res){
    //pedido al usuario
     sendEmail.enviarEthereal(
       order.user,
-      'Pedido recibido---Número de orden'+order._id,
-      JSON.stringify(order)
+      'Cloud-Club | Pedido recibido',
+      '<h1>Gracias por su compra</h1><p>Estamos procesando su pedido</p><h3>Su número de orden es: '+order._id+'</h3>'
     )
 
 }
