@@ -25,7 +25,7 @@ $ npm start
 
 ## Deploy
 ```bash
-https://cloud-club.herokuapp.com/
+https://cloudclub.fly.dev/
 ```
 
 ## Tecnologias Backend
